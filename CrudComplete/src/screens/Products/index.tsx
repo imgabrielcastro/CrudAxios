@@ -45,7 +45,7 @@ export default function ProductsPage() {
     if (loading) return <ActivityIndicator size="large" color="#000" />;
 
     return (
-        <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1, padding: 20, alignContent: "center", justifyContent: "center" }}>
             <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 10 }}>
                 Lista de Produtos
             </Text>
