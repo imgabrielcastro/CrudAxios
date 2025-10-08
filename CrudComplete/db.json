@@ -1,0 +1,6 @@
+{
+    "products": [
+      { "id": 1, "name": "Camiseta", "price": 59.9 },
+      { "id": 2, "name": "Tênis", "price": 299.9 }
+    ]
+  }
