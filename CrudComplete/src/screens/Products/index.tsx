@@ -44,6 +44,30 @@ export default function ProductsPage() {
 
     if (loading) return <ActivityIndicator size="large" color="#000" />;
 
+    return (
+        <View style={{ flex: 1, padding: 20 }}>
+            <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 10 }}>
+                Lista de Produtos
+            </Text>
 
+            <ProductForm onSubmit={handleAdd} />
 
+            <FlatList
+                data={products}
+                keyExtractor={(item) => item.id?.toString() || Math.random().toString()}
+                renderItem={({ item }) => (
+                    <ProductCard
+                        product={item}
+                        onDelete={() => handleDelete(item.id!)}
+                        onEdit={() =>
+                            handleEdit(item.id!, {
+                                ...item,
+                                name: item.name + " (editado)",
+                            })
+                        }
+                    />
+                )}
+            />
+        </View>
+    );
 }

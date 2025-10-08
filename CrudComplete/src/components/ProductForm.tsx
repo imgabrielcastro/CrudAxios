@@ -2,24 +2,25 @@ import React, { useState } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
 import { Product } from "../types/Product";
 
-interface IProps {
-  onSubmit: (product: Product) => void;
-  product?: Product;
+interface Props {
+  onSubmit: (data: Product) => void;
+  defaultValues?: Product;
 }
 
-export default function ProductForm({ onSubmit, product }: IProps) {
-  const [name, setName] = useState(product?.name || "");
-  const [price, setPrice] = useState(product?.price?.toString() || "");
+export default function ProductForm({ onSubmit, defaultValues }: Props) {
+  const [name, setName] = useState(defaultValues?.name || "");
+  const [price, setPrice] = useState(
+    defaultValues?.price ? String(defaultValues.price) : ""
+  );
 
   const handleSubmit = () => {
-    if (!name || !price) return alert("Preencha todos os campos");
-
+    if (!name || !price) return alert("Preencha todos os campos!");
     onSubmit({ name, price: Number(price) });
     setName("");
     setPrice("");
   };
 
-   return (
+  return (
     <View style={styles.container}>
       <TextInput
         placeholder="Nome do produto"
